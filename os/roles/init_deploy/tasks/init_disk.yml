@@ -1,0 +1,19 @@
+---
+- name: copy disk.sh to /tmp
+  template:
+    src: disk.j2
+    dest: /tmp/disk.sh
+    mode: 755
+  when: mount == "true"
+- name: mount disk
+  shell: sh /tmp/disk.sh
+  when: mount == "true"
+- name: copy disk-dilatation.sh to /tmp
+  template:
+    src: disk-dilatation.j2
+    dest: /tmp/disk-dilatation.sh
+    mode: 755
+  when: dilatation == "true"
+- name: dilatation disk
+  shell: sh /tmp/disk-dilatation.sh
+  when: dilatation == "true"

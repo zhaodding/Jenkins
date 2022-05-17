@@ -1,0 +1,8 @@
+#!/bin/bash
+pvcreate {{ disk }}
+vgcreate vg_data {{ disk }}
+lvcreate -n lv_data -l 100%vg vg_data
+mkfs.xfs /dev/mapper/vg_data-lv_data
+mkdir /data
+echo '/dev/vg_data/lv_data /data xfs defaults 0 0' >> /etc/fstab
+mount -a

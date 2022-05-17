@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "n
+p
+
+
+
+t
+
+8e
+w
+" | fdisk {{ disk }}
+partprobe
+newdisk=`fdisk -l |grep {{ disk }}|awk '{print $1}' |tail -n 1`
+pvcreate $newdisk
+vgcreate vg_data $newdisk
+lvcreate -n lv_data -l 100%vg vg_data
+mkfs.xfs /dev/mapper/vg_data-lv_data
+mkdir /data
+echo '/dev/vg_data/lv_data /data xfs defaults 0 0' >> /etc/fstab
+mount -a

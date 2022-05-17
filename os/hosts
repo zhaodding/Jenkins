@@ -1,0 +1,13 @@
+[nginx]
+p-czhtc-mq-pcp-nginx-04 ansible_ssh_host=10.50.30.53
+p-czhtc-mq-k8s-node-11 ansible_ssh_host=10.50.30.54
+
+[newrizon]
+node3 ansible_ssh_host=10.0.48.42
+
+[init-hosts]
+ansible_ssh_user=root
+ansible_ssh_pass=admin@pwd
+disk=false
+mount=false
+dilatation=false

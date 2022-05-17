@@ -1,0 +1,7 @@
+---
+- include: init_sys.yml
+- include: init_disk.yml
+- include: init_ntp.yml
+  when: init_ntp == "true"
+- include: init_docker.yml
+  when: init_docker == "true"

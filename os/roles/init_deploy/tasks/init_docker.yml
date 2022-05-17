@@ -1,0 +1,74 @@
+---
+- name: make directory
+  file:
+    path: "{{ path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  loop:
+    - /opt/tools
+    - /data/docker
+    - /etc/docker
+  loop_control:
+    loop_var: path
+- name: create file
+  file: name=/etc/docker/daemon.json state=touch
+- name: tar package
+  unarchive:
+    src: docker-20.10.3.tgz
+    dest: /usr/local
+- name: copy file
+  shell:
+    chdir: /usr/local
+    cmd: cp -rf docker/* /usr/bin
+- name: docker images quick
+  shell:
+    cmd: |
+      cat > /etc/docker/daemon.json << EOF
+      {
+          "data-root": "/data/docker"
+      }
+      EOF
+- name: service docker manage
+  shell:
+    cmd: |
+      cat > /lib/systemd/system/docker.service << EOF
+      [Unit]
+      Description=Docker Application Container Engine
+      Documentation=https://docs.docker.com
+      After=network-online.target firewalld.service
+      Wants=network-online.target
+
+      [Service]
+      Type=notify
+      ExecStart=/usr/bin/dockerd --insecure-registry=harbor.agilines.com
+      ExecReload=/bin/kill -s HUP $MAINPID
+      LimitNOFILE=infinity
+      LimitNPROC=infinity
+      LimitCORE=infinity
+      TimeoutStartSec=0
+      Delegate=yes
+      KillMode=process
+      Restart=on-failure
+      StartLimitBurst=3
+      StartLimitInterval=60s
+
+      [Install]
+      WantedBy=multi-user.target
+      EOF
+- name: start docker
+  systemd:
+    daemon_reload: yes
+    name: docker
+    state: restarted
+    enabled: yes
+- name: delete /usr/local/docker
+  file:
+    path: /usr/local/docker
+    state: absent
+- name: status
+  shell: docker info
+  register: docker
+- debug:
+    var: docker.stdout_lines

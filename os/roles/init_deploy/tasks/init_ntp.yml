@@ -1,0 +1,36 @@
+---
+- name: create directory /data/init_deploy
+  file:
+    path: /data/init_deploy
+    state: directory
+- name: transfer init_package.tar.gz to /data/init_deploy
+  copy:
+    src: init_package.tar.gz
+    dest: /data/init_deploy
+- name: install ntp  env
+  shell: cd /data/init_deploy && tar xf init_package.tar.gz && cd init_package && yum localinstall -y *
+  ignore_errors: True
+- name: del old ntp server
+  lineinfile:
+    path: /etc/ntp.conf
+    regexp: '^server'
+    state: absent
+
+- name: add new ntp server
+  lineinfile:
+    path: /etc/ntp.conf
+    line: "server {{ ntp_server }} iburst"
+
+- name: config ntp server
+  lineinfile:
+    path: /etc/ntp.conf
+    line: "restrict {{ ntp_server }} nomodify notrap noquery"
+- name: sync time
+  shell: "ntpdate -u {{ ntp_server }}"
+- name: start ntpd
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
+
+
