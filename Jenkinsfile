@@ -3,7 +3,8 @@ pipeline {
 
 	stages {
 		stage('Scan') {
-    		dir("${WORKSPACE}"){
+		    steps {
+		        dir("${WORKSPACE}"){
         		script {
             		try{
 						out = sh(script: "[ -f **/target/failsafe-reports/TEST-*.xml ]  && echo 'true' || echo 'false' ", returnStdout: true)
@@ -17,6 +18,9 @@ pipeline {
 					echo("failsafe-reports does not exist.")
 				}
 			}
+
+		    }
+
     	}
 	}
 }
