@@ -15,7 +15,7 @@ pipeline {
 						}
             		} catch(Exception e) {
 							println e
-					echo("failsafe-reports does not exist.")
+					        echo("failsafe-reports does not exist.")
 				    }
 			    }
 			    }
