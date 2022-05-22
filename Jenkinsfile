@@ -10,6 +10,7 @@ pipeline {
 						out = sh(script: "[ -f **/target/failsafe-reports/TEST-*.xml ]  && echo 'true' || echo 'false' ", returnStdout: true)
 						println out
 						if(out == "true") {
+						    echo "hello"
                 		    junit '**/target/failsafe-reports/TEST-*.xml'
 						    echo "failsafe-reports exist."
 						}
