@@ -8,10 +8,10 @@ pipeline {
         		script {
             		try{
 						out = sh(script: "[ -f **/target/failsafe-reports/TEST-*.xml ]  && echo 'true' || echo 'false' ", returnStdout: true)
-						println out
-						echo 'out : +$out'
+// 						println out
 						if(out == "true") {
-                		    junit '**/target/failsafe-reports/TEST-*.xml'
+//                 		    junit '**/target/failsafe-reports/TEST-*.xml'
+                            cat '**/target/failsafe-reports/TEST-*.xml'
 						    echo "failsafe-reports exist."
 						}
             		} catch(Exception e) {
