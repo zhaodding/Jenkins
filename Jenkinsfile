@@ -11,9 +11,8 @@ pipeline {
 						println out
 						echo 'out : +$out'
 						if(out == "true") {
-						    echo $out
-//                 		    junit '**/target/failsafe-reports/TEST-*.xml'
-// 						    echo "failsafe-reports exist."
+                		    junit '**/target/failsafe-reports/TEST-*.xml'
+						    echo "failsafe-reports exist."
 						}
             		} catch(Exception e) {
 							println e
