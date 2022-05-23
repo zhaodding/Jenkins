@@ -17,8 +17,9 @@ pipeline {
            steps {
                script {
                     bat """
-                           D:
+                           E:
                            dir
+                           attrib E:\JenkinsNode\workspace\check-catiafile\testdata\test_json.json
                         """
                }
            }
