@@ -16,7 +16,7 @@ pipeline {
 	    stage ("list directory") {
            steps {
                script {
-                    bat 'if not exist "d:\\a.txt" echo d:\\a.txt is not exit！'
+                    bat 'if not exist "d:\\afsdfsdf.txt" echo d:\\a.txt is not exit！'
                }
            }
        }
