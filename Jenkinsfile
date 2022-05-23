@@ -17,7 +17,7 @@ pipeline {
            steps {
                script {
                     bat """
-                           cd /D
+                           D:
                            dir
                         """
                }
