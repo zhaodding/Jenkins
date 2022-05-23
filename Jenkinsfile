@@ -32,7 +32,7 @@ pipeline {
        stage ("change dir"){
             steps {
                 script {
-                    bat '''cd E:
+                    bat '''E:
                     ls'''
                 }
             }
