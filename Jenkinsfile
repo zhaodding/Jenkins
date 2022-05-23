@@ -1,3 +1,7 @@
+import hudson.model.*;
+println env.JOB_NAME
+println env.BUILD_NUMBER
+
 pipeline {
 // 	agent any
 
@@ -16,6 +20,9 @@ pipeline {
                }
            }
        }
+
+
+
 
        stage ("Which java") {
            steps {
