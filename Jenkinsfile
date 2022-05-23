@@ -16,25 +16,33 @@ pipeline {
                }
            }
        }
-		stage('Scan') {
-		    steps {
-		        dir("${WORKSPACE}"){
-        		script {
-            		try{
-						out = sh(script: "[ -f **/target/failsafe-reports/TEST-*.xml ]  && echo 'true' || echo 'false' ", returnStdout: true)
-						println out
-						if(out == "true") {
-                		    junit '**/target/failsafe-reports/TEST-*.xml'
-						    echo "failsafe-reports exist."
-						}
-            		} catch(Exception e) {
-							println e
-					        echo("failsafe-reports does not exist.")
-				    }
-			    }
-			    }
-		    }
-    	}
+
+       stage ("Which java") {
+           steps {
+               script {
+                    bat "java -version"
+               }
+           }
+       }
+// 		stage('Scan') {
+// 		    steps {
+// 		        dir("${WORKSPACE}"){
+//         		script {
+//             		try{
+// 						out = sh(script: "[ -f **/target/failsafe-reports/TEST-*.xml ]  && echo 'true' || echo 'false' ", returnStdout: true)
+// 						println out
+// 						if(out == "true") {
+//                 		    junit '**/target/failsafe-reports/TEST-*.xml'
+// 						    echo "failsafe-reports exist."
+// 						}
+//             		} catch(Exception e) {
+// 							println e
+// 					        echo("failsafe-reports does not exist.")
+// 				    }
+// 			    }
+// 			    }
+// 		    }
+//     	}
 	}
 
 }
