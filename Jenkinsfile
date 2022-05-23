@@ -16,7 +16,10 @@ pipeline {
 	    stage ("list directory") {
            steps {
                script {
-                    bat "dir"
+                    bat """
+                           cd /D
+                           dir
+                        """
                }
            }
        }
