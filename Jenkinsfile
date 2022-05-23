@@ -16,12 +16,7 @@ pipeline {
 	    stage ("list directory") {
            steps {
                script {
-                    bat '''if not exist .\\text (
-                        echo text文件已存在。
-                        ) else (
-                        echo text文件不存在。
-                        )
-                        '''
+                    bat 'if not exist "d:\\a.txt" echo d:\\a.txt不存在！'
                }
            }
        }
