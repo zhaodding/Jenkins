@@ -28,18 +28,18 @@ pipeline {
        stage("find file") {
             steps {
                 script {
-                    jpg_name = "{}.jpg".format(scene)
+                    bat '''jpg_name = "{}.jpg".format(scene)
                     cwd = os.path.join(os.getcwd())
-                    new_cwd = cwd.replace("\\", "/")
-                    static_folder = "{}/{}".format(new_cwd, 'static')
+                    new_cwd = cwd.replace("\\\\", "/")
+                    static_folder = "{}/{}".format(new_cwd, \'static\')
                     filename = "weixin/inviate_img/{}".format(jpg_name)
                     full_path = "{}/{}".format(static_folder, filename)
-                    my_file = url_for('static', filename=filename, _external=True)
+                    my_file = url_for(\'static\', filename=filename, _external=True)
                     path = pathlib.Path(full_path)
                     if path.exists():
                     print("文件已存在")
                     return my_file
-                    print("文件不存在")
+                    print("文件不存在")'''
                 }
             }
        }
