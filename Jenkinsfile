@@ -35,7 +35,7 @@ pipeline {
         stage ("cd E:") {
            steps{
 				script {
-					json_file = "${env.WORKSPACE}/testdata/test_json.json"
+					json_file = "**/testdata/test_json.json"
 					if(fileExists(json_file) == true) {
 						echo("json file is exists")
 					}else {
