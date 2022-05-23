@@ -21,9 +21,6 @@ pipeline {
            }
        }
 
-
-
-
        stage ("Which java") {
            steps {
                script {
@@ -32,18 +29,27 @@ pipeline {
            }
        }
 
-        stage ("cd E:") {
-           steps{
-				script {
-					json_file = "**/testdata/test_json.json"
-					if(fileExists(json_file) == true) {
-						echo("json file is exists")
-					}else {
-						error("here haven't find json file")
-					}
-				}
-			}
+       stage ("change dir"){
+            steps {
+                script {
+                    bat '''cd E:
+                    ls'''
+                }
+            }
        }
+
+//         stage ("cd E:") {
+//            steps{
+// 				script {
+// 					json_file = "**/testdata/test_json.json"
+// 					if(fileExists(json_file) == true) {
+// 						echo("json file is exists")
+// 					}else {
+// 						error("here haven't find json file")
+// 					}
+// 				}
+// 			}
+//        }
 
 
 //        stage("find file") {
