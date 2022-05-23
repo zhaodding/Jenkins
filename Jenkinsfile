@@ -16,11 +16,12 @@ pipeline {
 	    stage ("list directory") {
            steps {
                script {
-                    bat """
-                           E:
-                           dir
-                           attrib E:\JenkinsNode\workspace\check-catiafile\testdata\test_json.json
-                        """
+                    bat '''if not exist .\\text (
+                        echo text文件已存在。
+                        ) else (
+                        echo text文件不存在。
+                        )
+                        '''
                }
            }
        }
