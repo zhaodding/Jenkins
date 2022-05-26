@@ -15,7 +15,12 @@ pipeline {
 	stages {
 
 	    stage("创建文件"){
-	        bat "mkdir \"E:/Tests\""
+	        steps{
+	            script {
+	                bat "mkdir \"E:/Tests\""
+	            }
+	        }
+
 	    }
 
 
