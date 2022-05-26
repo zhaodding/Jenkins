@@ -8,7 +8,6 @@ pipeline {
 	 agent {
         node {
             label "win-demo"
-//             customWorkspace "${env.JOB_NAME}/${env.BUILD_NUMBER}"
         }
     }
 
@@ -18,10 +17,9 @@ pipeline {
 	        steps{
 	            script {
 	                bat "dir \"E:/Tests\""
-                    bat 'more \"E:/Tests/note.txt\"'
+                    bat 'more \"F:/其它/license\"'
 	            }
 	        }
-
 	    }
 
 
