@@ -17,7 +17,7 @@ pipeline {
 	        steps{
 	            script {
 	                bat "dir \"E:/Tests\""
-                    bat 'more \"F:/其它/license\"'
+                    bat 'more \"F:/other/license\"'
 	            }
 	        }
 	    }
