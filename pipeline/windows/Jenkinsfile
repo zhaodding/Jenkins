@@ -13,29 +13,31 @@ pipeline {
     }
 
 	stages {
-	    stage ("list directory") {
-           steps {
-               script {
-                    bat 'if not exist "d:\\afsdfsdf.txt" echo d:\\a.txt is not exit！'
-               }
-           }
-       }
 
-       stage ("Which java") {
-           steps {
-               script {
-                    bat "java -version"
-               }
-           }
-       }
-
-       stage ("change dir"){
+	    stage ("change dir"){
             steps {
                 script {
-                    bat 'cd'
+                    dir("E:/enkinsNode")
                 }
             }
        }
+
+
+// 	    stage ("list directory") {
+//            steps {
+//                script {
+//                     bat 'if not exist "d:\\afsdfsdf.txt" echo d:\\a.txt is not exit！'
+//                }
+//            }
+//        }
+//
+//        stage ("Which java") {
+//            steps {
+//                script {
+//                     bat "java -version"
+//                }
+//            }
+//        }
 
 //         stage ("cd E:") {
 //            steps{
