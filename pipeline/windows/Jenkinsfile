@@ -14,16 +14,24 @@ pipeline {
 
 	stages {
 
-	    stage ("change dir"){
-            steps {
-                script {
-                    if(!fileExists("/"))
-                    {
-                        bat "mkdir \"E:/_Tests\""
-                    }
-                }
-            }
-       }
+	    stage("hello world"){
+	        helloworld()
+	    }
+
+	    stage("read file test"){
+	        getFileText()
+	    }
+
+// 	    stage ("change dir"){
+//             steps {
+//                 script {
+//                     if(!fileExists("/"))
+//                     {
+//                         bat "mkdir \"E:/_Tests\""
+//                     }
+//                 }
+//             }
+//        }
 
 
 // 	    stage ("list directory") {

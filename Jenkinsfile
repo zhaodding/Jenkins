@@ -2,40 +2,40 @@ import hudson.model.*;
 println env.JOB_NAME
 println env.BUILD_NUMBER
 
-pipeline {
-// 	agent any
-
-	 agent {
-        node {
-            label "win-demo"
-//             customWorkspace "${env.JOB_NAME}/${env.BUILD_NUMBER}"
-        }
-    }
-
-	stages {
-	    stage ("list directory") {
-           steps {
-               script {
-                    bat 'if not exist "d:\\afsdfsdf.txt" echo d:\\a.txt is not exit！'
-               }
-           }
-       }
-
-       stage ("Which java") {
-           steps {
-               script {
-                    bat "java -version"
-               }
-           }
-       }
-
-       stage ("change dir"){
-            steps {
-                script {
-                    bat 'cd'
-                }
-            }
-       }
+// pipeline {
+// // 	agent any
+//
+// 	 agent {
+//         node {
+//             label "win-demo"
+// //             customWorkspace "${env.JOB_NAME}/${env.BUILD_NUMBER}"
+//         }
+//     }
+//
+// 	stages {
+// 	    stage ("list directory") {
+//            steps {
+//                script {
+//                     bat 'if not exist "d:\\afsdfsdf.txt" echo d:\\a.txt is not exit！'
+//                }
+//            }
+//        }
+//
+//        stage ("Which java") {
+//            steps {
+//                script {
+//                     bat "java -version"
+//                }
+//            }
+//        }
+//
+//        stage ("change dir"){
+//             steps {
+//                 script {
+//                     bat 'cd'
+//                 }
+//             }
+//        }
 
 //         stage ("cd E:") {
 //            steps{
@@ -90,6 +90,6 @@ pipeline {
 // 			    }
 // 		    }
 //     	}
-	}
-
-}
+// 	}
+//
+// }
