@@ -14,13 +14,10 @@ pipeline {
 
 	stages {
 
-	    stage("hello world"){
-	        helloworld()
+	    stage("创建文件"){
+	        bat "mkdir \"E:/Tests\""
 	    }
 
-	    stage("read file test"){
-	        getFileText()
-	    }
 
 // 	    stage ("change dir"){
 //             steps {
