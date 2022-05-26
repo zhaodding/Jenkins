@@ -17,7 +17,10 @@ pipeline {
 	    stage ("change dir"){
             steps {
                 script {
-                    dir("E:/enkinsNode")
+                    if(!fileExists("/"))
+                    {
+                        bat "mkdir \"E:/_Tests\""
+                    }
                 }
             }
        }
