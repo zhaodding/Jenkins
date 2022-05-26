@@ -17,7 +17,8 @@ pipeline {
 	    stage("创建文件"){
 	        steps{
 	            script {
-	                bat "mkdir \"E:/Tests2\""
+	                bat "cd \"E:/Tests\""
+	                bat "dir"
 	            }
 	        }
 
