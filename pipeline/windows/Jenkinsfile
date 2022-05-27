@@ -12,12 +12,16 @@ pipeline {
     }
 
 	stages {
+        stage(git){
+
+        }
 
 	    stage("创建文件"){
 	        steps{
 	            script {
 	                bat "dir \"E:/Tests\""
                     bat 'more \"F:/other/license\"'
+                    覆盖全环境   jenkins slave  label  指定机器   ansible  pipeline调用  分客户分环境
 	            }
 	        }
 	    }

@@ -1,0 +1,56 @@
+
+一、windows开启远程管理WinRM：
+开启WinRM：
+    在powershell窗口中输入“enable-psremoting”，启用WinRM会话配置
+关闭WinRM：
+    在powershell窗口中输入“disable-psremoting”，禁用WinRM会话配置
+
+##windows验证winrm开启情况
+    winrm enumerate winrm/config/Listener
+
+##winrm添加windows本地用户
+New-LocalUser -name "pcpdevops" -Password (ConvertTo-SecureString -String 'zA)00xh+MxNA@h.)T9Ws' -AsPlainText -Force) -AccountNeverExpires -PasswordNeverExpires
+Add-LocalGroupMember -Group "Administrators" -Member "pcpdevops"
+
+参考：https://blog.csdn.net/qq_23663693/article/details/121654390
+
+
+
+二、Ansible操作windows：
+参考：https://zhuanlan.zhihu.com/p/99814357
+/etc/ansible/hosts文件添加Windows信息
+[windows]
+192.168.80.130 ansible_ssh_user="Administrator" ansible_ssh_pass="tom@000000" ansible_ssh_port=5985 ansible_connection="winrm" ansible_winrm_server_cert_validation=ignore
+
+安装pywinrm
+1)安装pip
+yum install -y epel-release        //安装epel-release
+yum-config-manager --enable epel  //enable epel
+yum install python-pip            //安装pip
+2)安装
+[root@node02 ansible]# pip install pywinrm
+
+测试：
+[root@node02 ansible]# ansible windows -m win_ping
+
+
+Python（一）- 安装与升级
+https://blog.csdn.net/weixin_41599858/article/details/101795427
+
+
+https://blog.csdn.net/NoamaNelson/article/details/117708164
+
+/usr/local/python/bin/pip3
+/usr/local/python/bin/python3.9
+
+
+ln -s /usr/local/python/bin/python3.9 /usr/bin/python2
+
+
+#!/usr/bin/python
+
+
+
+
+
+
