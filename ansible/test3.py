@@ -11,9 +11,12 @@ PWD_LOCAL = 'tom@000000'              # 服务器管理员密码
 
 # 测试的命令
 CMD = [
-    'C:',
+
+    'whoami',
+    # 'find C:\\devops\\ -name \"*.exe\"',
+    'for /r C: %i in (w*) do @echo %i'
     'ls C:\\devops\\',
-    'ls',
+    'ls C:\\',
     'ipconfig'
 ]
 def run_cmd(ip, user, pwd, cmd_list):
