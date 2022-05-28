@@ -11,8 +11,9 @@ PWD_LOCAL = 'tom@000000'              # 服务器管理员密码
 
 # 测试的命令
 CMD = [
-    'mkdir win_test_file',
-    'mkdir win_test_file1',
+    'C:',
+    'ls C:\\devops\\',
+    'ls',
     'ipconfig'
 ]
 def run_cmd(ip, user, pwd, cmd_list):
@@ -21,7 +22,7 @@ def run_cmd(ip, user, pwd, cmd_list):
         for cmd in cmd_list:
             ret = win.run_ps(cmd)
             if ret.status_code == 0:  # 调用成功
-                print(cmd)
+                print(ret.std_out)
             else:
                 return False
         return True
